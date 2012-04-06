@@ -137,7 +137,7 @@ class InteractiveConsole(cmd.Cmd):
         self.vault_modified = True
         print "User Added, but not saved"
 
-    def do_import(self,line):
+    def do_import(self, line):
         """
         Adds a CSV importer, based on CSV file
 
@@ -148,7 +148,7 @@ class InteractiveConsole(cmd.Cmd):
             cmd.Cmd.do_help(self, "import")
             return
 
-        data = csv.reader(open(line,'rb'))
+        data = csv.reader(open(line, 'rb'))
         try:
             for row in data:
                 entry = self.vault.Record.create()
@@ -160,7 +160,7 @@ class InteractiveConsole(cmd.Cmd):
                 self.vault.records.append(entry)
             self.vault_modified = True
             print "Import completed, but not saved."
-        except csv.Error, e: 
+        except csv.Error, e:
             sys.exit('file %s, line %d: %s' % (line, data.line_num, e))
 
     def do_ls(self, line):
